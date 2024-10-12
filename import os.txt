@@ -1,0 +1,21 @@
+import os
+
+path = "/tmp"
+lis = os.listdir(path)
+for file_list in lis:
+    print(file_list)
+
+
+def update_server_config(file_path,key,value):
+    with open(file_path, "r") as file:
+    lines = file.readlines()
+
+    with open(file_path, "w") as file:
+        for line in lines:
+            if key in line:
+                file.write(key + "=" + value + "\n")
+            else:
+                file.write(line)
+
+update_server_config("server.config","max_conn","500")
+    
